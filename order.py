@@ -9,6 +9,10 @@ access_key = os.environ['UPBIT_OPEN_API_ACCESS_KEY']
 secret_key = os.environ['UPBIT_OPEN_API_SECRET_KEY']
 server_url = os.environ['UPBIT_OPEN_API_SERVER_URL']
 
+# market : ticker
+# side : bid/ask(매수/매도)
+# ord_type : market/limit
+# total order price : price * volume
 params = {
   'market': 'KRW-BTC'
   'side': 'bid'
@@ -29,7 +33,7 @@ payload = {
     'query_hash_alg': 'SHA512',
 }
 
-jwt_token = jwt.encode(payload, secret_key)
+jwt_token = jwt.encode(payload, secret_key).decode("utf-8")
 authorization = 'Bearer {}'.format(jwt_token)
 headers = {
   'Authorization': authorization,
