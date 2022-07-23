@@ -25,7 +25,7 @@ payload = {
     'query_hash_alg': 'SHA512',
 }
 
-jwt_token = jwt.encode(payload, secret_key).decode("utf-8")
+jwt_token = jwt.encode(payload, secret_key)
 authorization = 'Bearer {}'.format(jwt_token)
 headers = {
   'Authorization': authorization,

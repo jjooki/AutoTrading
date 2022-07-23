@@ -14,10 +14,10 @@ server_url = os.environ['UPBIT_OPEN_API_SERVER_URL']
 # ord_type : market/limit
 # total order price : price * volume
 params = {
-  'market': 'KRW-BTC'
-  'side': 'bid'
-  'ord_type': 'limit'
-  'price': '100.0'
+  'market': 'KRW-BTC',
+  'side': 'bid',
+  'ord_type': 'limit',
+  'price': '100.0',
   'volume': '0.01'
 }
 query_string = unquote(urlencode(params, doseq=True)).encode("utf-8")
@@ -33,11 +33,11 @@ payload = {
     'query_hash_alg': 'SHA512',
 }
 
-jwt_token = jwt.encode(payload, secret_key).decode("utf-8")
+jwt_token = jwt.encode(payload, secret_key)
 authorization = 'Bearer {}'.format(jwt_token)
 headers = {
   'Authorization': authorization,
 }
 
-res = requests.post(server_url + '/v1/orders', json=data, headers=headers)
-res.json()
+res = requests.post(server_url + '/v1/orders', params=params, headers=headers)
+print(res.json())

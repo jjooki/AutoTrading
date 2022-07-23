@@ -1,6 +1,6 @@
 def price_unit(price):
     unit = 0
-    
+
     if price >= 2000000:
         unit = 1000
     elif price >= 1000000:
@@ -29,7 +29,7 @@ def price_unit(price):
 def total_price(price, volume):
     return price * volume
 
-def is_higher_than_lowerlimitprice(price, volume):
+def is_higher_than_lower_limit(price, volume):
     if total_price(price, volume) > 5000 :
         return True
     else:
