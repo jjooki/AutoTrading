@@ -1,6 +1,7 @@
 import jwt
 import hashlib
 import os
+import pyupbit
 import requests
 import uuid
 from urllib.parse import urlencode, unquote
