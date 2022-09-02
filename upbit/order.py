@@ -117,7 +117,8 @@ def market_order(ticker, side, ord_type, volume):
     res = requests.post(server_url + '/v1/orders', params=params, headers=headers)
     return res.json()
 
-def cancel_order()
+def cancel_order():
+    pass
 
 if __name__ == "__main__":
     url = "https://api.upbit.com/v1/market/all?isDetails=true"
