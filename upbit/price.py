@@ -40,11 +40,8 @@ def is_higher_than_lower_limit(price, volume):
     else:
         return False
 
-def order_fee(price, volume, exchange = "upbit", leverage = 1):
-    if exchange == "upbit":
-        return total_price(price, volume) * 0.0005
-    elif exchange == "binance":
-        return total_price(price, volume) * leverage * 0.001
+def order_fee(price, volume, leverage = 1):
+    return total_price(price, volume) * 0.0005
 
 def trading_fee(ticker, volume, from_="upbit", to_="binance"):
     if from_ == "upbit":
