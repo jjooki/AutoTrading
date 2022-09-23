@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # os.path.abspath(os.path.realpath(__file__))
     path_ = os.path.split(os.path.abspath(os.path.realpath(__file__)))[0]
     # print(path_)
-    print(mrq.market_info('KRW-XRP'))
+    print(order.ticker_info('KRW-XRP'))
     
     # df = pd.read_csv(path_ + '/withdraw_fee.csv', sep=',')
     # print(df)
