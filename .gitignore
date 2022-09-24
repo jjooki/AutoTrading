@@ -1,3 +1,9 @@
+### Key file ###
+*.pem
+*.pfx
+*.crt
+*.jks
+
 ### Text ###
 *.txt
 *.log

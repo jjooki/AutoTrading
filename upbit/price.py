@@ -40,7 +40,7 @@ def is_higher_than_lower_limit(price, volume):
     else:
         return False
 
-def order_fee(price, volume, leverage = 1):
+def order_fee(price, volume):
     return total_price(price, volume) * 0.0005
 
 def trading_fee(ticker, volume, from_="upbit", to_="binance"):
