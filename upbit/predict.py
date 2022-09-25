@@ -1,15 +1,35 @@
 import pyupbit
 from prophet import Prophet
+from datetime import datetime
 
-def predict_price(ticker="KRW-BTC", interval = "minute60", count = 200, periods = 24, freq = 'H'):
-    df = pyupbit.get_ohlcv(ticker=ticker, interval=interval, count=count)
-    df = df.reset_index()
-    df['ds'] = df['index']
-    df['y'] = df['close']
-    data = df[['ds','y']]
+class predict:
+    def __init__(self, ticker="KRW-BTC", interval="minute60", count=200, period=24, freq='H'):
+        self.market = ticker
+        df = pyupbit.get_ohlcv(ticker=ticker, interval=interval, count=count)
+        df = df.reset_index()
+        df['ds'] = df['index']
+        df['price'] = df['close']
+        self.data = df[['ds','price']]
 
-    model = Prophet()
-    model.fit(data)
-    future = model.make_future_dataframe(periods=periods, freq=freq)
-    forecast = model.predict(future)
-    return forecast[['trend', 'trend_lower','trend_upper']].iloc(-1)
+        self.model = Prophet()
+        self.model.fit(self.data)
+        self.future = self.model.make_future_dataframe(periods=period, freq=freq)
+        self.forecast = self.model.predict(self.future)
+
+    def plot(self):
+        self.model.plot(self.forecast).savefig(
+            f"{self.market}model_{datetime.now().strftime('%Y%m%d-%H%M%S')}.png"
+        )
+        self.model.plot_components(self.forecast).savefig(
+            f"{self.market}model_components_{datetime.now().strftime('%Y%m%d-%H%M%S')}.png"
+        )
+
+    def backtesting(self):
+        pass
+
+def plot(forecast):
+    .plot
+
+if __name__ == '__main__':
+    df = pyupbit.get_ohlcv(count=10)
+    df
