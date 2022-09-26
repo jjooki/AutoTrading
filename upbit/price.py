@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import order
 
+# order minimum price increment unit(upbit)
 def price_unit(price):
     unit = 0
 
@@ -52,16 +53,5 @@ if __name__ == "__main__":
     path_ = os.path.split(os.path.abspath(os.path.realpath(__file__)))[0]
     # print(path_)
     print(order.ticker_info('KRW-XRP'))
-    
-    # df = pd.read_csv(path_ + '/withdraw_fee.csv', sep=',')
-    # print(df)
-    # fee_dict = {}
-    # for ticker in df.columns:
-    #     if ticker == '구분' or ticker == 'KRW':
-    #         continue
-    #     print(ticker)
-    #     price = mrq.trade_price(ticker)
-    #     fee_dict[ticker] = df.loc[0,ticker] * price
-    #     print(f"{ticker}의 현재 가격은 {price}입니다.")
 
 
