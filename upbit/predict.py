@@ -5,6 +5,9 @@ from datetime import datetime
 class predict:
     def __init__(self, ticker="KRW-BTC", interval="minute60", count=200, period=24, freq='H'):
         self.market = ticker
+        self.interval = interval
+        self.count = count
+        
         df = pyupbit.get_ohlcv(ticker=ticker, interval=interval, count=count)
         df = df.reset_index()
         df['ds'] = df['index']
@@ -24,11 +27,12 @@ class predict:
             f"{self.market}model_components_{datetime.now().strftime('%Y%m%d-%H%M%S')}.png"
         )
 
-    def backtesting(self):
+    def is_upward(self) -> bool:
+        return 
+
+    def backtest(self):
         pass
 
-def plot(forecast):
-    .plot
 
 if __name__ == '__main__':
     df = pyupbit.get_ohlcv(count=10)
